@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_customer
+    columns:
+      - name: customer_unique_id
+        tests:
+          - unique
+          - not_null
+  - name: dim_product
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+  - name: fct_sales
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - customer_unique_id
+            - order_id
+    columns:
+      - name: customer_unique_id
+        tests:
+          - not_null
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+  - name: fct_daily_product_sold
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - product_id
+    columns:
+      - name: date_day
+        tests:
+          - not_null
+    columns:
+      - name: product_id
+        tests:
+          - not_null
