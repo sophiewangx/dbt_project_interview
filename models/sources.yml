@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: ecommerce
+    schema: raw
+    database: ae-recruitment-sandbox
+    tables: 
+      - name: customers
+      - name: order_items
+      - name: orders
+      - name: payments
+      - name: products

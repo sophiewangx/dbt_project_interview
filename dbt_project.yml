@@ -1,0 +1,35 @@
+name: 'ecommerce_shop'
+
+config-version: 2
+version: '0.1'
+
+profile: 'ae-recruitment-exercise6'
+
+model-paths: ["models"]
+test-paths: ["tests"]
+analysis-paths: ["analysis"]
+macro-paths: ["macros"]
+snapshot-paths: [snapshots]
+
+target-path: "target"
+clean-targets:
+    - "target"
+    - "dbt_modules"
+    - "logs"
+
+require-dbt-version: [">=1.0.0", "<2.0.0"]
+
+models:
+  ecommerce_shop:
+      materialized: table
+      staging:
+        materialized: view
+
+snapshots:
+  ecommerce_shop:
+    +unique_key: id
+    +strategy: timestamp
+    +updated_at: updated_at
+
+
+    

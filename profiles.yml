@@ -1,0 +1,13 @@
+ae-recruitment-exercise6:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: ae-recruitment-sandbox
+      dataset: dbt_sandbox6
+      threads: 4
+      timeout_seconds: 300
+      location: northamerica-northeast1
+      priority: interactive
+      retries: 1
