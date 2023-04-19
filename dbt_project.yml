@@ -24,3 +24,12 @@ models:
       materialized: table
       staging:
         materialized: view
+
+snapshots:
+  ecommerce_shop:
+    +unique_key: id
+    +strategy: timestamp
+    +updated_at: updated_at
+
+
+    
