@@ -2,18 +2,21 @@ version: 2
 
 models:
   - name: dim_customer
+    description: This contains information about customers such as number of orders, total value, first order, recent order and most expensive order.
     columns:
       - name: customer_unique_id
         tests:
           - unique
           - not_null
   - name: dim_product
+    description: This contains information about products such as total units sold, revenue, top 10 product flag and volume.
     columns:
       - name: product_id
         tests:
           - unique
           - not_null
   - name: fct_sales
+    description: This table has information for daily product sold.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -28,6 +31,7 @@ models:
         tests:
           - not_null
   - name: fct_daily_product_sold
+    description: This table has information for any new saless or repeat purchases including days between purchase date and delivery date.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
